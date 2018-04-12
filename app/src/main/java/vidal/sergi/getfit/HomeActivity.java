@@ -8,13 +8,33 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
+import com.rapidapi.rapidconnect.Argument;
+import com.rapidapi.rapidconnect.RapidApiConnect;
+
+
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Sergi on 02/03/2018.
@@ -76,5 +96,40 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                 }
                 return true; }});
+
+        String URL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/jokes/random";
+
+        try {
+            // These code snippets use an open-source library. http://unirest.io/java
+            HttpResponse<JsonNode> response = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/jokes/random")
+                    .header("X-Mashape-Key", "0QyJv6Qny5mshNvwaYV0pZ286Fckp1VCsHIjsnOxhN7x1VPoDJ")
+                    .header("Accept", "application/json")
+                    .asJson();
+            Log.d( "RESPONSE",response.toString());
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("rest response : ",response.toString());
+
+            }
+        },
+                new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("rest response : ",error.toString());
+
+
+            }
+        }
+        );
+        requestQueue.add(objectRequest);
+
+
+
+
     }
 }
