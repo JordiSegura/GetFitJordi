@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:title="Home"
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_rutinas"
+        android:enabled="true"
+        android:icon="@drawable/ic_rutinas"
+        android:title="Rutinas"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_dietas"
+        android:enabled="true"
+        android:icon="@drawable/ic_dietas"
+        android:title="Dietas"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_ajustes"
+        android:enabled="true"
+        android:icon="@drawable/ic_ajustes"
+        android:title="Ajustes"
+        app:showAsAction="ifRoom"/>
+</menu>

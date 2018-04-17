@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">GetFit</string>
+    <string name="sexo">Sexo</string>
+    <string name="Hombre">Hombre</string>
+    <string name="Mujer">Mujer</string>
+    <string name="Test1">horizontal rv</string>
+    <string name="Test2">Añadir dieta</string>
+    <string name="Test3">Consultar dieta</string>
+    <string-array name="sexos">
+        <item>Hombre</item><item>Mujer</item>
+    </string-array>
+</resources>
