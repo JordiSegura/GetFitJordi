@@ -1,10 +1,13 @@
 package vidal.sergi.getfit;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -24,12 +27,15 @@ import com.wenchao.cardstack.CardStack;
 import vidal.sergi.getfit.Objetos.Dietas;
 import vidal.sergi.getfit.Objetos.FirebaseReferences;
 import vidal.sergi.getfit.Objetos.HorizontalRVActivity;
+import vidal.sergi.getfit.Tabs_ViewPager.Tab1;
+import vidal.sergi.getfit.Tabs_ViewPager.Tab2;
+import vidal.sergi.getfit.Tabs_ViewPager.Tab3;
 
 /**
  * Created by jordi on 15/03/2018.
  */
 
-public class DietasActivity extends AppCompatActivity {
+public class DietasActivity extends AppCompatActivity implements Tab1.OnFragmentInteractionListener,Tab2.OnFragmentInteractionListener,Tab3.OnFragmentInteractionListener {
 
   FloatingActionMenu floatingActionMenu;
     com.github.clans.fab.FloatingActionButton op1,op2,op3;
@@ -47,6 +53,46 @@ public class DietasActivity extends AppCompatActivity {
         op1 =  findViewById(R.id.floatingActionItem1);
         op2 =  findViewById(R.id.floatingActionItem2);
         op3 =  findViewById(R.id.floatingActionItem3);
+        TabLayout tabLayout = findViewById(R.id.tablayout);
+        tabLayout.addTab(tabLayout.newTab().setText(""));
+        tabLayout.addTab(tabLayout.newTab().setText(""));
+        tabLayout.addTab(tabLayout.newTab().setText(""));
+
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        final ViewPager viewPager = findViewById(R.id.pager);
+        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+
+              /*  Log.d(String.valueOf(viewPager.getCurrentItem()), "onTabSelected: ");
+                viewPager.getCurrentItem();
+                switch (viewPager.getCurrentItem()){
+                    case 0:Intent intent = new Intent(DietasActivity.this,PierdePesoActivity.class);
+                    startActivity(intent);break;
+                    case 1:Intent intent1 = new Intent(DietasActivity.this,AumentoMasaActivity.class);
+                        startActivity(intent1);break;
+                    case 2:Intent intent2 = new Intent(DietasActivity.this,MantenteSanoActivity.class);
+                        startActivity(intent2);break;
+                        }*/
+
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
         op1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,5 +172,9 @@ public class DietasActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }
 

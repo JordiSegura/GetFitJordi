@@ -7,6 +7,10 @@
     <string name="Test2">Añadir dieta</string>
     <string name="Test3">Consultar dieta</string>
     <string-array name="sexos">
-        <item>Hombre</item><item>Mujer</item>
+        <item>Hombre</item>
+        <item>Mujer</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

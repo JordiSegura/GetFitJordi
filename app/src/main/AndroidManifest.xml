@@ -31,12 +31,12 @@
         <activity android:name=".MantenteSanoActivity" />
         <activity android:name=".PierdePesoActivity" />
         <activity android:name=".AumentoMasaActivity" />
+        <activity android:name=".Tabs_ViewPager.Tab1" />
+
         <activity android:name=".PierdePesoActivity2" />
 
 
         <activity android:name=".Objetos.HorizontalRVActivity" />
-
-
 
 
     </application>
